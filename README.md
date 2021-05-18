@@ -24,8 +24,8 @@ message| varchar
 1. #### GET  - /posts - Get all the blog posts
 2. #### POST  - /posts - Add a new blog post
 3. #### GET  - /posts/id - Get a blog post by id
-4. #### DELETE  - /posts/id - Delete a blog with given id
-5. #### PUT  - /posts/id - Updates a blog with given id
+4. #### DELETE  - /posts/id - Delete a blog post with given id
+5. #### PUT  - /posts/id - Updates a blog post with given id
 ### Comments
 1. #### GET  - /posts/postid/comments - Get all the comments of a blog post with given id
 2. #### POST  - /posts/postid/comments - Adds a new comment to a blog post with given id 
