@@ -1,46 +1,45 @@
-usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
-           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
-           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
-           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
-           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
-           <command> [<args>]
+# Blog Application API using Spring Boot #
+## Technologies ##
+1. Spring Boot
+2. MySQL 
 
-These are common Git commands used in various situations:
+#### As the schema of this application contains a OneToMany Relation (Comments to Post), I selected MySQL which is a SQL relational database to keep the track of relations inbetween the table data. 
+## Schema ##
+### Post Table
+Column | Datatype 
+-------|---------
+id     |     int(PK,AI) 
+title  | varchar  
+content| varchar
 
-start a working area (see also: git help tutorial)
-   clone             Clone a repository into a new directory
-   init              Create an empty Git repository or reinitialize an existing one
+### Comment Table
+Column | Datatype 
+-------|--------- 
+id     |     int 
+post_id| int     
+message| varchar 
 
-work on the current change (see also: git help everyday)
-   add               Add file contents to the index
-   mv                Move or rename a file, a directory, or a symlink
-   restore           Restore working tree files
-   rm                Remove files from the working tree and from the index
-   sparse-checkout   Initialize and modify the sparse-checkout
+## API Endpoints
+### Posts
+1. #### GET  - /posts - Get all the blog posts
+2. #### POST  - /posts - Add a new blog post
+3. #### GET  - /posts/id - Get a blog post by id
+4. #### DELETE  - /posts/id - Delete a blog with given id
+5. #### PUT  - /posts/id - Updates a blog with given id
+### Comments
+1. #### GET  - /posts/postid/comments - Get all the comments of a blog post with given id
+2. #### POST  - /posts/postid/comments - Adds a new comment to a blog post with given id 
 
-examine the history and state (see also: git help revisions)
-   bisect            Use binary search to find the commit that introduced a bug
-   diff              Show changes between commits, commit and working tree, etc
-   grep              Print lines matching a pattern
-   log               Show commit logs
-   show              Show various types of objects
-   status            Show the working tree status
+## Variables
+#### Post
+* int id
+* String title;
+* String content;
 
-grow, mark and tweak your common history
-   branch            List, create, or delete branches
-   commit            Record changes to the repository
-   merge             Join two or more development histories together
-   rebase            Reapply commits on top of another base tip
-   reset             Reset current HEAD to the specified state
-   switch            Switch branches
-   tag               Create, list, delete or verify a tag object signed with GPG
+#### Comment
+* int id
+* int post_id;
+* String message;
 
-collaborate (see also: git help workflows)
-   fetch             Download objects and refs from another repository
-   pull              Fetch from and integrate with another repository or a local branch
-   push              Update remote refs along with associated objects
-
-'git help -a' and 'git help -g' list available subcommands and some
-concept guides. See 'git help <command>' or 'git help <concept>'
-to read about a specific subcommand or concept.
-See 'git help git' for an overview of the system.
+## Postman Collection
+https://www.getpostman.com/collections/f8e55334485a023cc2e9
